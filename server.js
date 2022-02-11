@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -5,6 +6,13 @@ const { bots, playerRecord } = require("./data");
 const { shuffleArray } = require("./utils");
 
 app.use(express.json());
+
+const Rollbar = require("rollbar");
+const rollbar = new Rollbar({
+  accessToken: process.env.ROLLBAR_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+});
 
 app.use(express.static("public"));
 
