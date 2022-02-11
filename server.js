@@ -89,6 +89,13 @@ app.get("/api/player", (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  console.log("Hit");
+  rollbar.log("Hit on server!");
+
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
