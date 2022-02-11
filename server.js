@@ -30,6 +30,7 @@ app.get("/api/robots", (req, res) => {
 });
 
 app.get("/api/robots/five", (req, res) => {
+  rollbar.log("Sent 5 Robots");
   try {
     let shuffled = shuffleArray(bots);
     let choices = shuffled.slice(0, 5);
