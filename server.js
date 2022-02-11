@@ -14,6 +14,8 @@ const rollbar = new Rollbar({
   captureUnhandledRejections: true,
 });
 
+rollbar.log("Hello World");
+
 app.use(express.static("public"));
 
 app.use("/js", express.static(path.join(__dirname, "./public/index.js")));
@@ -30,7 +32,7 @@ app.get("/api/robots", (req, res) => {
 });
 
 app.get("/api/robots/five", (req, res) => {
-  rollbar.log("Sent 5 Robots");
+  rollbar.info("Sent 5 Robots");
   console.log("Sent 5 Robots");
   try {
     let shuffled = shuffleArray(bots);
