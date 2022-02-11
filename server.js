@@ -31,6 +31,7 @@ app.get("/api/robots", (req, res) => {
 
 app.get("/api/robots/five", (req, res) => {
   rollbar.log("Sent 5 Robots");
+  console.log("Sent 5 Robots");
   try {
     let shuffled = shuffleArray(bots);
     let choices = shuffled.slice(0, 5);
@@ -90,7 +91,7 @@ app.get("/api/player", (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
+app.get("/api/robots", (req, res) => {
   console.log("Hit");
   rollbar.log("Hit on server!");
 
